@@ -49,4 +49,51 @@ struct BoardModel {
         return count
     }
     
+    
+    mutating func safelyAssingCreatureState(i:Int, j:Int, state:Int) {
+        let safeRow = (i + gridSize) % gridSize
+        let safeCol = (j + gridSize) % gridSize
+        self.creatures[safeRow][safeCol] = state
+    }
 }
+//
+//enum DesignType: String ,CaseIterable {
+//    case block , beehive, loaf, boat, tub // still life
+//    case blinker, toad, beacon, pentaDecathlon
+//    case glider, LWSS , MWSS, HWSS
+//    
+//    var offsetDesing: [(x: Int, y: Int)] {
+//        switch(self) {
+//        case .block:
+//            return [
+//             
+//            ]
+//        case .beehive:
+//            return []
+//        case .loaf:
+//            return []
+//        case .boat:
+//            return []
+//        case .tub:
+//            return []
+//        case .blinker:
+//            return []
+//        case .toad:
+//            return []
+//        case .beacon:
+//            return []
+//        case .pentaDecathlon:
+//            return []
+//        case .glider:
+//            return []
+//        case .LWSS:
+//            return []
+//        case .MWSS:
+//            return []
+//        case .HWSS:
+//      
+//            
+//        }
+//    }
+//    
+//}
