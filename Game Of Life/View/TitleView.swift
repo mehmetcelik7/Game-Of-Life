@@ -23,6 +23,7 @@ struct TitleView: View {
             .bold()
             .foregroundStyle(LinearGradient(colors: gradientColor, startPoint: .topLeading, endPoint: .bottomTrailing))
             .shadow(color: .shadow, radius: 10,x: 0, y: 5)
+       
     }
 }
 
