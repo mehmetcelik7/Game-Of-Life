@@ -226,4 +226,11 @@ enum DesignType: String ,CaseIterable {
         }
     }
     
+    static let stillLifeDesign: [DesignType] = [ .block, .beehive, .loaf, .boat, .tub
+        
+    ]
+    static let OscillatorsDesign: [DesignType] = [ .blinker, .toad, .beacon, .pulsar, .pentaDecathlon
+                                                   
+    ]
+    static let spaceShipsDesign : [DesignType] = [ .glider, .LWSS, .MWSS, .HWSS]
 }
