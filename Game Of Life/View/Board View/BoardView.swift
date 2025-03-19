@@ -25,31 +25,65 @@ struct BoardView: View {
             )
             let cellSize = canvasSize / CGFloat(gridSize)
             ZStack {
+                
+                if showImage {
+                    Image(currentImage)
+                        .resizable()
+                        .opacity(0.8)
+                }else{
+                    Color.black
+                }
+                
+                
+                
                 CreatureGrid(
                     creatures: $board.creatures,
                     gridSize: gridSize,
                     color: color
                 )
-                .clipShape(.rect(cornerRadius: 10))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1)
+                .onTapGesture { location in
+                    let row = Int(location.y / cellSize)
+                    let col = Int(location.x / cellSize)
+                    
+                    board
+                        .applyDesignPattern(
+                            row: row,
+                            col: col,
+                            designType: selectedDesign,
+                            swapXY: swapXY
+                        )
+                
                 }
-                .frame(width: canvasSize,height: canvasSize)
-                .frame(maxHeight: .infinity)
-                .shadow(radius: 3)
+               
             }
+            .clipShape(.rect(cornerRadius: 10))
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+            }
+            .frame(width: canvasSize,height: canvasSize)
+            .frame(maxHeight: .infinity)
+            .shadow(radius: 3)
         }
     }
 }
 
 #Preview {
-    BoardView(
-        board: .constant(BoardModel(gridSize: 50)),
-        selectedDesign: .constant(.tub),
-        swapXY: .constant(false),
-        currentImage: .constant(.mountain1),
-        showImage: .constant(true)
-    )
-    .padding()
+    VStack {
+        BoardView(
+            board: .constant(BoardModel(gridSize: 50)),
+            selectedDesign: .constant(.tub),
+            swapXY: .constant(false),
+            currentImage: .constant(.mountain1),
+            showImage: .constant(true)
+        )
+        BoardView(
+            board: .constant(BoardModel(gridSize: 50)),
+            selectedDesign: .constant(.tub),
+            swapXY: .constant(false),
+            currentImage: .constant(.mountain1),
+            showImage: .constant(false)
+        )
+        
+    }.padding()
 }

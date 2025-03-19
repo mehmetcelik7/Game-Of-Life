@@ -66,5 +66,26 @@ struct BoardModel {
             }
         }
     }
+    
+    mutating func nextGeneration() {
+        var newCreatures = self.creatures
+        
+        for row in 0..<gridSize {
+            for col in 0..<gridSize {
+                let liveNeighbors = countLiveNeighbours(row: row, col: col)
+                
+                if self.creatures[row][col] == 1 {
+                    if liveNeighbors < 2 || liveNeighbors > 3 {
+                        newCreatures[row][col] = 0
+                    }
+                }else {
+                    if liveNeighbors == 3 {
+                        newCreatures[row][col] = 1
+                    }
+                }
+            }
+        }
+        self.creatures = newCreatures
+    }
 }
 
