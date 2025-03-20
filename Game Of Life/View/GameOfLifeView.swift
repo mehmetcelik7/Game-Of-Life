@@ -60,7 +60,7 @@ struct GameOfLifeView: View {
                     showImage: $showImage,
                     currentImage: $currentImage,
                     speed: $speed, isPlaying: $isPlaying,
-                    showDesignSelectionView: $showDesingSelectionView
+                    showDesignSelectionView: $showDesingSelectionView, board: $board
                 )
                
             }
