@@ -35,11 +35,12 @@ struct DesignSelectionView: View {
                                 selectedDesign = design
                             }
                         } label: {
-                            Text("\(design)")
-                        }.buttonStyle(.borderedProminent)
-                            .tint(color(for: design))
-                            .scaleEffect(selectedDesign == design ? 1.05 : 1.0)
-                            .shadow(radius: selectedDesign == design ? 5 : 0)
+                            DesignButton(
+                                design: design,
+                                color: color(for: design),
+                                selectedDesign: selectedDesign
+                            )
+                        }
                         
                     }
                 }.padding(.vertical,5)
